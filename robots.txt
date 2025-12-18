@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://osaeg109-boop.github.io/O.S.A/sitemap.xml
