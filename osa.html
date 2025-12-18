@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O S A | Hoodie Store</title>
+<title>O S A | متجر هوديز</title>
 
 <style>
 *{box-sizing:border-box;font-family:Arial}
-body{margin:0;background:#f2f2f2;color:#111;line-height:1.6}
+body{margin:0;background:#f2f2f2;color:#111;line-height:1.6;padding-bottom:70px}
 
 /* زر خدمة العملاء */
 .support-btn{
-  position:fixed;bottom:20px;left:20px;
+  position:fixed;bottom:80px;left:20px;
   background:#25D366;color:#fff;
   padding:14px 18px;border-radius:50px;
   text-decoration:none;font-weight:bold;z-index:999;
@@ -57,9 +57,11 @@ button:hover{background:#000}
 
 /* Checkout */
 .checkout{
+  display:none;
   background:#fff;margin:15px;padding:15px;
   border-radius:18px
 }
+.checkout.active{display:block}
 .checkout h2{margin-top:0;font-size:18px}
 .cart-item{
   padding:6px 0;border-bottom:1px dashed #ccc;
@@ -68,15 +70,29 @@ button:hover{background:#000}
 
 /* سياسة الاسترجاع */
 .return-policy{
+  display:none;
   background:#fff;margin:15px;padding:15px;
   border-radius:18px
 }
+.return-policy.active{display:block}
 .return-policy h2{margin-top:0;font-size:18px}
+
+/* Bottom Navigation Bar */
+.bottom-bar{
+  position:fixed;bottom:0;left:0;width:100%;
+  background:#fff;display:flex;justify-content:space-around;
+  align-items:center;height:60px;border-top:1px solid #ccc;z-index:999
+}
+.bottom-bar button{
+  background:none;color:#111;border:none;font-size:14px;font-weight:bold;
+  cursor:pointer;width:33%;
+}
+.bottom-bar button:hover{color:#000}
 
 /* الفوتر */
 footer{
   background:#eaeaea;text-align:center;
-  padding:18px
+  padding:18px;margin-top:20px
 }
 footer a{
   margin:0 8px;text-decoration:none;
@@ -84,7 +100,6 @@ footer a{
 }
 </style>
 </head>
-
 <body>
 
 <a class="support-btn" href="https://wa.me/201027802631" target="_blank">
@@ -98,7 +113,7 @@ footer a{
 
 <section class="products" id="products"></section>
 
-<section class="checkout">
+<section class="checkout" id="checkout">
   <h2>🧾 Checkout – تأكيد الطلب</h2>
   <div id="cartItems"></div>
   <input id="name" placeholder="الاسم">
@@ -107,7 +122,7 @@ footer a{
   <button onclick="sendOrder()">تأكيد الطلب عبر واتساب</button>
 </section>
 
-<section class="return-policy">
+<section class="return-policy" id="returnPolicy">
 <h2>📝 سياسة الاسترجاع والاستبدال</h2>
 <p>
 في <strong>O S A</strong> نحرص على رضا عملائنا وتقديم منتجات بجودة عالية،
@@ -146,10 +161,16 @@ footer a{
   <div>
     <a href="https://www.instagram.com/o.s.a_eg" target="_blank">Instagram</a>
     <a href="https://www.tiktok.com/@o.s.a_eg" target="_blank">TikTok</a>
-    <a href="#return-policy">سياسة الاسترجاع</a>
   </div>
   <p>© جميع الحقوق محفوظة لدي HOMOS</p>
 </footer>
+
+<!-- Bottom Navigation Bar -->
+<div class="bottom-bar">
+  <button onclick="showSection('products')">🏠 الرئيسية</button>
+  <button onclick="showSection('checkout')">🛒 السلة</button>
+  <button onclick="showSection('returnPolicy')">📄 سياسة الاسترجاع</button>
+</div>
 
 <script>
 let cart=[];
@@ -172,10 +193,8 @@ products.innerHTML+=`
 <p class="price">السعر: --</p>
 <select class="size">
 <option value="">المقاس</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-<option>2XL</option>
+<option>M</option><option>L</option>
+<option>XL</option><option>2XL</option>
 </select>
 <button onclick="addToCart(this)">إضافة للسلة</button>
 </div>`;
@@ -217,6 +236,16 @@ let msg=`طلب جديد - O S A%0A
 ${cart.join("%0A")}%0A
 الدفع عند الاستلام`;
 window.open(`https://wa.me/201275855053?text=${msg}`,"_blank");
+}
+
+function showSection(id){
+document.getElementById("products").style.display="none";
+document.getElementById("checkout").classList.remove("active");
+document.getElementById("returnPolicy").classList.remove("active");
+
+if(id==="products") document.getElementById("products").style.display="grid";
+if(id==="checkout") document.getElementById("checkout").classList.add("active");
+if(id==="returnPolicy") document.getElementById("returnPolicy").classList.add("active");
 }
 </script>
 
