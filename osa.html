@@ -2,143 +2,85 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>O S A | Official Hoodie Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O S A | Hoodie Store</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family: Arial, sans-serif;
-}
-body{
-  margin:0;
-  background:#f4f4f4;
-  color:#111;
-}
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f2f2f2;color:#111;line-height:1.6}
 
 /* زر خدمة العملاء */
 .support-btn{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 20px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:bold;
-  z-index:1000;
+  position:fixed;bottom:20px;left:20px;
+  background:#25D366;color:#fff;
+  padding:14px 18px;border-radius:50px;
+  text-decoration:none;font-weight:bold;z-index:999;
 }
 
 /* الهيدر */
 header{
-  background:#fff;
-  text-align:center;
-  padding:40px 20px;
-  border-bottom:1px solid #ddd;
+  background:#fff;text-align:center;
+  padding:30px 15px;border-bottom:1px solid #ddd
 }
-header h1{
-  letter-spacing:10px;
-  font-size:42px;
-  margin:0;
-}
-header p{
-  color:#666;
-  margin-top:12px;
-  font-size:16px;
-}
+header h1{letter-spacing:10px;font-size:36px;margin:0}
+header p{color:#666;margin-top:8px;font-size:14px}
 
-/* المنتجات */
+/* شبكة المنتجات */
 .products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  padding:35px;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:15px;padding:15px
 }
-
 .product{
-  background:#fff;
-  border-radius:20px;
-  padding:18px;
-  transition:0.35s;
+  background:#fff;border-radius:18px;
+  padding:12px;transition:.3s
 }
 .product:hover{
-  transform:translateY(-12px);
-  box-shadow:0 25px 50px rgba(0,0,0,0.18);
+  transform:translateY(-6px);
+  box-shadow:0 15px 30px rgba(0,0,0,.15)
 }
-
-/* الصورة */
 .product img{
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  border-radius:15px;
+  width:100%;height:200px;
+  object-fit:cover;border-radius:14px
 }
-
-/* اسم المنتج */
-.product h3{
-  margin:14px 0 5px;
-  font-size:20px;
+.product h3{font-size:16px;margin:10px 0 5px}
+.price{font-weight:bold;font-size:14px;margin:6px 0}
+select, input{
+  width:100%;padding:9px;margin-top:6px;
+  border-radius:8px;border:1px solid #ccc;font-size:14px
 }
-
-/* السعر */
-.price{
-  font-weight:bold;
-  margin:8px 0;
-}
-
-/* اختيارات */
-select{
-  width:100%;
-  padding:11px;
-  margin-top:10px;
-  border-radius:10px;
-  border:1px solid #ccc;
-  font-size:15px;
-}
-
-/* زر */
 button{
-  width:100%;
-  padding:13px;
-  margin-top:16px;
-  background:#888;
-  color:#fff;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  cursor:pointer;
-  transition:0.3s;
+  width:100%;padding:11px;margin-top:10px;
+  background:#888;color:#fff;border:none;
+  border-radius:10px;font-size:15px;cursor:pointer
 }
-button:hover{
-  background:#000;
+button:hover{background:#000}
+
+/* Checkout */
+.checkout{
+  background:#fff;margin:15px;padding:15px;
+  border-radius:18px
+}
+.checkout h2{margin-top:0;font-size:18px}
+.cart-item{
+  padding:6px 0;border-bottom:1px dashed #ccc;
+  font-size:14px
 }
 
-/* السلة */
-.cart{
-  background:#fff;
-  margin:30px;
-  padding:25px;
-  border-radius:20px;
+/* سياسة الاسترجاع */
+.return-policy{
+  background:#fff;margin:15px;padding:15px;
+  border-radius:18px
 }
-.cart h2{
-  margin-top:0;
-}
-.cart-item{
-  padding:10px 0;
-  border-bottom:1px dashed #ccc;
-}
+.return-policy h2{margin-top:0;font-size:18px}
 
 /* الفوتر */
 footer{
-  background:#eaeaea;
-  text-align:center;
-  padding:25px;
+  background:#eaeaea;text-align:center;
+  padding:18px
 }
 footer a{
-  margin:0 12px;
-  text-decoration:none;
-  color:#000;
-  font-weight:bold;
+  margin:0 8px;text-decoration:none;
+  color:#000;font-weight:bold;font-size:14px
 }
 </style>
 </head>
@@ -151,106 +93,130 @@ footer a{
 
 <header>
   <h1>O S A</h1>
-  <p>هودي ستايل شبابي – دفع عند الاستلام</p>
+  <p>هودي ستايل شبابي – الدفع عند الاستلام</p>
 </header>
 
-<section class="products">
+<section class="products" id="products"></section>
 
-  <!-- منتج 1 -->
-  <div class="product">
-    <img src="img1.jpeg">
-    <h3>OSA Hoodie</h3>
-    <select onchange="updatePrice(this)">
-      <option value="">اختر نوع الهودي</option>
-      <option value="400">سادة - 400 جنيه</option>
-      <option value="500">مطبوع - 500 جنيه</option>
-    </select>
-    <p class="price">السعر: --</p>
-    <select class="size">
-      <option value="">اختر المقاس</option>
-      <option>M</option><option>L</option><option>XL</option><option>2XL</option>
-    </select>
-    <button onclick="addToCart(this)">إضافة للسلة</button>
-  </div>
-
-  <!-- انسخ نفس البلوك مع تغيير img -->
-  <script>
-    for(let i=2;i<=9;i++){
-      document.write(`
-      <div class="product">
-        <img src="img${i}.jpeg">
-        <h3>OSA Hoodie</h3>
-        <select onchange="updatePrice(this)">
-          <option value="">اختر نوع الهودي</option>
-          <option value="400">سادة - 400 جنيه</option>
-          <option value="500">مطبوع - 500 جنيه</option>
-        </select>
-        <p class="price">السعر: --</p>
-        <select class="size">
-          <option value="">اختر المقاس</option>
-          <option>M</option><option>L</option><option>XL</option><option>2XL</option>
-        </select>
-        <button onclick="addToCart(this)">إضافة للسلة</button>
-      </div>
-      `);
-    }
-  </script>
-
+<section class="checkout">
+  <h2>🧾 Checkout – تأكيد الطلب</h2>
+  <div id="cartItems"></div>
+  <input id="name" placeholder="الاسم">
+  <input id="phone" placeholder="رقم الهاتف">
+  <p style="font-size:14px;margin-top:8px">💵 طريقة الدفع: الدفع عند الاستلام</p>
+  <button onclick="sendOrder()">تأكيد الطلب عبر واتساب</button>
 </section>
 
-<section class="cart">
-  <h2>🛒 سلة المشتريات</h2>
-  <div id="cartItems"></div>
-  <button onclick="sendOrder()">تأكيد الطلب عبر واتساب</button>
+<section class="return-policy">
+<h2>📝 سياسة الاسترجاع والاستبدال</h2>
+<p>
+في <strong>O S A</strong> نحرص على رضا عملائنا وتقديم منتجات بجودة عالية،
+وطبقًا لقانون حماية المستهلك المصري رقم <strong>181 لسنة 2018</strong>،
+نوضح سياسة الاستبدال والاسترجاع كالتالي:
+</p>
+<h3>1️⃣ الاستبدال</h3>
+<ul>
+<li>يحق للعميل استبدال المنتج خلال 14 يومًا من تاريخ الاستلام.</li>
+<li>يشترط أن يكون المنتج بحالته الأصلية وغير مستخدم أو مغسول.</li>
+<li>يتم الاستبدال في حالة وجود عيب صناعة أو اختلاف المقاس.</li>
+</ul>
+<h3>2️⃣ الاسترجاع</h3>
+<ul>
+<li>يحق للعميل استرجاع المنتج خلال 14 يومًا في حالة وجود عيب صناعة.</li>
+<li>لا يتم قبول الاسترجاع في حالة الاستخدام أو التلف الناتج عن سوء الاستخدام.</li>
+</ul>
+<h3>3️⃣ مصاريف الشحن</h3>
+<ul>
+<li>تتحمل O S A مصاريف الشحن في حالة الخطأ من جانبنا.</li>
+<li>يتحمل العميل مصاريف الشحن في حالة الاستبدال لرغبة شخصية.</li>
+</ul>
+<h3>4️⃣ طريقة التواصل</h3>
+<p>
+للاستبدال أو الاسترجاع، تواصل عبر واتساب: 
+<a href="https://wa.me/201027802631">+20 102 780 2631</a>
+</p>
+<h3>5️⃣ ملاحظات هامة</h3>
+<ul>
+<li>المنتجات المخفضة لا يتم استرجاعها إلا في حالة وجود عيب صناعة.</li>
+<li>تخضع جميع الطلبات للفحص قبل الموافقة.</li>
+</ul>
 </section>
 
 <footer>
   <div>
     <a href="https://www.instagram.com/o.s.a_eg" target="_blank">Instagram</a>
     <a href="https://www.tiktok.com/@o.s.a_eg" target="_blank">TikTok</a>
+    <a href="#return-policy">سياسة الاسترجاع</a>
   </div>
   <p>© جميع الحقوق محفوظة لدي HOMOS</p>
 </footer>
 
 <script>
 let cart=[];
+const images=[
+"img.JBEG.JPG","img2.JBEG.JPG","img3.JBEG.JPG",
+"img4.JBEG.JPG","img5.JBEG.JPG","img6.JBEG.JPG",
+"img7.JBEG.JPG","img8.JBEG.JPG","img9.JBEG.JPG"
+];
+let products=document.getElementById("products");
+images.forEach(img=>{
+products.innerHTML+=`
+<div class="product">
+<img src="${img}">
+<h3>OSA Hoodie</h3>
+<select onchange="updatePrice(this)">
+<option value="">نوع الهودي</option>
+<option value="400">سادة - 400 جنيه</option>
+<option value="500">مطبوع - 500 جنيه</option>
+</select>
+<p class="price">السعر: --</p>
+<select class="size">
+<option value="">المقاس</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>2XL</option>
+</select>
+<button onclick="addToCart(this)">إضافة للسلة</button>
+</div>`;
+});
 
 function updatePrice(select){
-  let price=select.value;
-  let box=select.parentElement.querySelector(".price");
-  box.textContent=price?`السعر: ${price} جنيه`:"السعر: --";
+let p=select.value;
+select.parentElement.querySelector(".price").textContent=p?`السعر: ${p} جنيه`:"السعر: --";
 }
 
 function addToCart(btn){
-  let product=btn.parentElement;
-  let type=product.querySelector("select").value;
-  let size=product.querySelector(".size").value;
-
-  if(type=="" || size==""){
-    alert("من فضلك اختر النوع والمقاس");
-    return;
-  }
-
-  let typeName=type==400?"سادة":"مطبوع";
-  cart.push(`هودي OSA - ${typeName} - مقاس ${size} - ${type} جنيه`);
-  renderCart();
+let box=btn.parentElement;
+let type=box.querySelector("select").value;
+let size=box.querySelector(".size").value;
+if(type==""||size==""){alert("اختار النوع والمقاس");return;}
+let t=type==400?"سادة":"مطبوع";
+cart.push(`هودي OSA | ${t} | ${size} | ${type} جنيه`);
+renderCart();
 }
 
 function renderCart(){
-  let box=document.getElementById("cartItems");
-  box.innerHTML="";
-  cart.forEach(item=>{
-    box.innerHTML+=`<div class="cart-item">${item}</div>`;
-  });
+let c=document.getElementById("cartItems");
+c.innerHTML="";
+cart.forEach(i=>{
+c.innerHTML+=`<div class="cart-item">${i}</div>`;
+});
 }
 
 function sendOrder(){
-  if(cart.length==0){
-    alert("السلة فارغة");
-    return;
-  }
-  let msg="طلب جديد:%0A"+cart.join("%0A")+"%0Aالدفع عند الاستلام";
-  window.open(`https://wa.me/201275855053?text=${msg}`,"_blank");
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+if(name==""||phone==""||cart.length==0){
+alert("كمّل البيانات والسلة");return;
+}
+let msg=`طلب جديد - O S A%0A
+الاسم: ${name}%0A
+الهاتف: ${phone}%0A
+------------------%0A
+${cart.join("%0A")}%0A
+الدفع عند الاستلام`;
+window.open(`https://wa.me/201275855053?text=${msg}`,"_blank");
 }
 </script>
 
