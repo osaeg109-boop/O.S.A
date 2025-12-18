@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>O S A | Official Hoodie Store</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+body{
+  margin:0;
+  background:#f4f4f4;
+  color:#111;
+}
+
+/* زر خدمة العملاء */
+.support-btn{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 20px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  z-index:1000;
+}
+
+/* الهيدر */
+header{
+  background:#fff;
+  text-align:center;
+  padding:40px 20px;
+  border-bottom:1px solid #ddd;
+}
+header h1{
+  letter-spacing:10px;
+  font-size:42px;
+  margin:0;
+}
+header p{
+  color:#666;
+  margin-top:12px;
+  font-size:16px;
+}
+
+/* المنتجات */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  padding:35px;
+}
+
+.product{
+  background:#fff;
+  border-radius:20px;
+  padding:18px;
+  transition:0.35s;
+}
+.product:hover{
+  transform:translateY(-12px);
+  box-shadow:0 25px 50px rgba(0,0,0,0.18);
+}
+
+/* الصورة */
+.product img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+/* اسم المنتج */
+.product h3{
+  margin:14px 0 5px;
+  font-size:20px;
+}
+
+/* السعر */
+.price{
+  font-weight:bold;
+  margin:8px 0;
+}
+
+/* اختيارات */
+select{
+  width:100%;
+  padding:11px;
+  margin-top:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+
+/* زر */
+button{
+  width:100%;
+  padding:13px;
+  margin-top:16px;
+  background:#888;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover{
+  background:#000;
+}
+
+/* السلة */
+.cart{
+  background:#fff;
+  margin:30px;
+  padding:25px;
+  border-radius:20px;
+}
+.cart h2{
+  margin-top:0;
+}
+.cart-item{
+  padding:10px 0;
+  border-bottom:1px dashed #ccc;
+}
+
+/* الفوتر */
+footer{
+  background:#eaeaea;
+  text-align:center;
+  padding:25px;
+}
+footer a{
+  margin:0 12px;
+  text-decoration:none;
+  color:#000;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<a class="support-btn" href="https://wa.me/201027802631" target="_blank">
+  خدمة العملاء
+</a>
+
+<header>
+  <h1>O S A</h1>
+  <p>هودي ستايل شبابي – دفع عند الاستلام</p>
+</header>
+
+<section class="products">
+
+  <!-- منتج 1 -->
+  <div class="product">
+    <img src="img1.jpeg">
+    <h3>OSA Hoodie</h3>
+    <select onchange="updatePrice(this)">
+      <option value="">اختر نوع الهودي</option>
+      <option value="400">سادة - 400 جنيه</option>
+      <option value="500">مطبوع - 500 جنيه</option>
+    </select>
+    <p class="price">السعر: --</p>
+    <select class="size">
+      <option value="">اختر المقاس</option>
+      <option>M</option><option>L</option><option>XL</option><option>2XL</option>
+    </select>
+    <button onclick="addToCart(this)">إضافة للسلة</button>
+  </div>
+
+  <!-- انسخ نفس البلوك مع تغيير img -->
+  <script>
+    for(let i=2;i<=9;i++){
+      document.write(`
+      <div class="product">
+        <img src="img${i}.jpeg">
+        <h3>OSA Hoodie</h3>
+        <select onchange="updatePrice(this)">
+          <option value="">اختر نوع الهودي</option>
+          <option value="400">سادة - 400 جنيه</option>
+          <option value="500">مطبوع - 500 جنيه</option>
+        </select>
+        <p class="price">السعر: --</p>
+        <select class="size">
+          <option value="">اختر المقاس</option>
+          <option>M</option><option>L</option><option>XL</option><option>2XL</option>
+        </select>
+        <button onclick="addToCart(this)">إضافة للسلة</button>
+      </div>
+      `);
+    }
+  </script>
+
+</section>
+
+<section class="cart">
+  <h2>🛒 سلة المشتريات</h2>
+  <div id="cartItems"></div>
+  <button onclick="sendOrder()">تأكيد الطلب عبر واتساب</button>
+</section>
+
+<footer>
+  <div>
+    <a href="https://www.instagram.com/o.s.a_eg" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@o.s.a_eg" target="_blank">TikTok</a>
+  </div>
+  <p>© جميع الحقوق محفوظة لدي HOMOS</p>
+</footer>
+
+<script>
+let cart=[];
+
+function updatePrice(select){
+  let price=select.value;
+  let box=select.parentElement.querySelector(".price");
+  box.textContent=price?`السعر: ${price} جنيه`:"السعر: --";
+}
+
+function addToCart(btn){
+  let product=btn.parentElement;
+  let type=product.querySelector("select").value;
+  let size=product.querySelector(".size").value;
+
+  if(type=="" || size==""){
+    alert("من فضلك اختر النوع والمقاس");
+    return;
+  }
+
+  let typeName=type==400?"سادة":"مطبوع";
+  cart.push(`هودي OSA - ${typeName} - مقاس ${size} - ${type} جنيه`);
+  renderCart();
+}
+
+function renderCart(){
+  let box=document.getElementById("cartItems");
+  box.innerHTML="";
+  cart.forEach(item=>{
+    box.innerHTML+=`<div class="cart-item">${item}</div>`;
+  });
+}
+
+function sendOrder(){
+  if(cart.length==0){
+    alert("السلة فارغة");
+    return;
+  }
+  let msg="طلب جديد:%0A"+cart.join("%0A")+"%0Aالدفع عند الاستلام";
+  window.open(`https://wa.me/201275855053?text=${msg}`,"_blank");
+}
+</script>
+
+</body>
+</html>
