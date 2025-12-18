@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O S A | متجر هوديز</title>
-
+<title>O S A | متجر هوديز شبابي في مصر</title>
+<meta name="description" content="O S A – متجر هوديز شبابي، هوديز سادة ومطبوع بأسعار مميزة، الدفع عند الاستلام في مصر">
+<meta name="keywords" content="OSA, O S A, هودي, هوديز, hoodie, ملابس شبابية, متجر ملابس مصر">
+<link rel="icon" href="img.JBEG.JPG" type="image/png">
 <style>
 *{box-sizing:border-box;font-family:Arial}
 body{margin:0;background:#f2f2f2;color:#111;line-height:1.6;padding-bottom:70px}
@@ -108,7 +110,8 @@ footer a{
 
 <header>
   <h1>O S A</h1>
-  <p>   </p></header>
+  <p>هودي ستايل شبابي – الدفع عند الاستلام</p>
+</header>
 
 <section class="products" id="products"></section>
 
@@ -182,8 +185,8 @@ let products=document.getElementById("products");
 images.forEach(img=>{
 products.innerHTML+=`
 <div class="product">
-<img src="${img}">
-<h3>OSA Hoodie</h3>
+<img src="${img}" alt="هودي O S A">
+<h3>هودي O S A</h3>
 <select onchange="updatePrice(this)">
 <option value="">نوع الهودي</option>
 <option value="400">سادة - 400 جنيه</option>
@@ -210,7 +213,7 @@ let type=box.querySelector("select").value;
 let size=box.querySelector(".size").value;
 if(type==""||size==""){alert("اختار النوع والمقاس");return;}
 let t=type==400?"سادة":"مطبوع";
-cart.push(`هودي OSA | ${t} | ${size} | ${type} جنيه`);
+cart.push(`هودي O S A | ${t} | ${size} | ${type} جنيه`);
 renderCart();
 }
 
