@@ -3,252 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O S A | متجر هوديز شبابي في مصر</title>
-<meta name="description" content="O S A – متجر هوديز شبابي، هوديز سادة ومطبوع بأسعار مميزة، الدفع عند الاستلام في مصر">
-<meta name="keywords" content="OSA, O S A, هودي, هوديز, hoodie, ملابس شبابية, متجر ملابس مصر">
-<link rel="icon" href="img.JBEG.JPG" type="image/png">
+
+<title>O S A | هوديز شبابية عصرية في مصر</title>
+<meta name="description" content="O S A – براند ملابس شبابي مصري. هوديز عالية الجودة، توصيل لكل المحافظات، دفع عند الاستلام.">
+<meta name="keywords" content="O S A, هوديز, ملابس شبابية, hoodie egypt, براند مصري">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
 <style>
-*{box-sizing:border-box;font-family:Arial}
-body{margin:0;background:#f2f2f2;color:#111;line-height:1.6;padding-bottom:70px}
-
-/* زر خدمة العملاء */
-.support-btn{
-  position:fixed;bottom:80px;left:20px;
-  background:#25D366;color:#fff;
-  padding:14px 18px;border-radius:50px;
-  text-decoration:none;font-weight:bold;z-index:999;
+:root {
+--primary:#1a1a1a;
+--secondary:#f4f4f4;
+--accent:#666;
+--white:#fff;
+--green:#4caf50;
 }
 
-/* الهيدر */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+
+body{
+background:#fff;
+color:#333;
+padding-bottom:80px;
+}
+
+/* Header */
 header{
-  background:#fff;text-align:center;
-  padding:30px 15px;border-bottom:1px solid #ddd
+text-align:center;
+padding:20px;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+background:rgba(255,255,255,.95);
+backdrop-filter:blur(10px);
+z-index:100;
 }
-header h1{letter-spacing:10px;font-size:36px;margin:0}
-header p{color:#666;margin-top:8px;font-size:14px}
+.logo{
+font-size:2.4rem;
+font-weight:700;
+letter-spacing:6px;
+color:#000;
+text-decoration:none;
+}
 
-/* شبكة المنتجات */
-.products{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:15px;padding:15px
+/* Trust Bar */
+.trust-bar{
+background:#f9f9f9;
+padding:10px;
+font-size:.85rem;
+text-align:center;
+color:#444;
+border-radius:10px;
+margin-top:15px;
 }
-.product{
-  background:#fff;border-radius:18px;
-  padding:12px;transition:.3s
-}
-.product:hover{
-  transform:translateY(-6px);
-  box-shadow:0 15px 30px rgba(0,0,0,.15)
-}
-.product img{
-  width:100%;height:200px;
-  object-fit:cover;border-radius:14px
-}
-.product h3{font-size:16px;margin:10px 0 5px}
-.price{font-weight:bold;font-size:14px;margin:6px 0}
-select, input{
-  width:100%;padding:9px;margin-top:6px;
-  border-radius:8px;border:1px solid #ccc;font-size:14px
-}
-button{
-  width:100%;padding:11px;margin-top:10px;
-  background:#888;color:#fff;border:none;
-  border-radius:10px;font-size:15px;cursor:pointer
-}
-button:hover{background:#000}
 
-/* Checkout */
-.checkout{
-  display:none;
-  background:#fff;margin:15px;padding:15px;
-  border-radius:18px
+/* Layout */
+.container{max-width:1200px;margin:auto;padding:20px}
+.hidden{display:none}
+
+/* Products */
+.product-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
 }
-.checkout.active{display:block}
-.checkout h2{margin-top:0;font-size:18px}
+.product-card{
+border:1px solid #eee;
+border-radius:12px;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+}
+.product-image-wrapper{
+aspect-ratio:3/4;
+background:#eee;
+}
+.product-image{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+.product-info{
+padding:12px;
+flex:1;
+}
+.product-name{font-weight:700;font-size:.9rem}
+.product-price{color:#666;font-size:.85rem;margin:5px 0}
+select{
+width:100%;
+padding:8px;
+border-radius:6px;
+border:1px solid #ddd;
+margin-bottom:8px;
+}
+.add-btn{
+width:100%;
+padding:10px;
+border:none;
+border-radius:6px;
+background:#000;
+color:#fff;
+font-weight:700;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:5px;
+}
+
+/* Cart */
 .cart-item{
-  padding:6px 0;border-bottom:1px dashed #ccc;
-  font-size:14px
+background:#f4f4f4;
+padding:15px;
+border-radius:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
 }
 
-/* سياسة الاسترجاع */
-.return-policy{
-  display:none;
-  background:#fff;margin:15px;padding:15px;
-  border-radius:18px
+/* Bottom Nav */
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:70px;
+background:#fff;
+border-top:1px solid #eee;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:1000;
 }
-.return-policy.active{display:block}
-.return-policy h2{margin-top:0;font-size:18px}
+.nav-item{
+background:none;
+border:none;
+color:#666;
+display:flex;
+flex-direction:column;
+align-items:center;
+font-size:.75rem;
+cursor:pointer;
+}
+.nav-item.active{color:#000;font-weight:700}
 
-/* Bottom Navigation Bar */
-.bottom-bar{
-  position:fixed;bottom:0;left:0;width:100%;
-  background:#fff;display:flex;justify-content:space-around;
-  align-items:center;height:60px;border-top:1px solid #ccc;z-index:999
+/* WhatsApp */
+.whatsapp-float{
+position:fixed;
+bottom:85px;
+right:20px;
+background:#25d366;
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+text-decoration:none;
+box-shadow:0 4px 12px rgba(0,0,0,.2);
 }
-.bottom-bar button{
-  background:none;color:#111;border:none;font-size:14px;font-weight:bold;
-  cursor:pointer;width:33%;
-}
-.bottom-bar button:hover{color:#000}
 
-/* الفوتر */
+/* Footer */
 footer{
-  background:#eaeaea;text-align:center;
-  padding:18px;margin-top:20px
+background:#f4f4f4;
+padding:30px;
+text-align:center;
+margin-top:40px;
 }
-footer a{
-  margin:0 8px;text-decoration:none;
-  color:#000;font-weight:bold;font-size:14px
+
+@media(min-width:768px){
+.product-grid{grid-template-columns:repeat(3,1fr)}
 }
 </style>
 </head>
+
 <body>
 
-<a class="support-btn" href="https://wa.me/201027802631" target="_blank">
-  خدمة العملاء
-</a>
-
 <header>
-  <h1>O S A</h1>
-  <p>  </p>
+<a class="logo" onclick="showSection('home')">O S A</a>
 </header>
 
-<section class="products" id="products"></section>
+<main class="container">
 
-<section class="checkout" id="checkout">
-  <h2>🧾 Checkout – تأكيد الطلب</h2>
-  <div id="cartItems"></div>
-  <input id="name" placeholder="الاسم">
-  <input id="phone" placeholder="رقم الهاتف">
-  <p style="font-size:14px;margin-top:8px">💵 طريقة الدفع: الدفع عند الاستلام</p>
-  <button onclick="sendOrder()">تأكيد الطلب عبر واتساب</button>
-</section>
-
-<section class="return-policy" id="returnPolicy">
-<h2>📝 سياسة الاسترجاع والاستبدال</h2>
-<p>
-في <strong>O S A</strong> نحرص على رضا عملائنا وتقديم منتجات بجودة عالية،
-وطبقًا لقانون حماية المستهلك المصري رقم <strong>181 لسنة 2018</strong>،
-نوضح سياسة الاستبدال والاسترجاع كالتالي:
-</p>
-<h3>1️⃣ الاستبدال</h3>
-<ul>
-<li>يحق للعميل استبدال المنتج خلال 14 يومًا من تاريخ الاستلام.</li>
-<li>يشترط أن يكون المنتج بحالته الأصلية وغير مستخدم أو مغسول.</li>
-<li>يتم الاستبدال في حالة وجود عيب صناعة أو اختلاف المقاس.</li>
-</ul>
-<h3>2️⃣ الاسترجاع</h3>
-<ul>
-<li>يحق للعميل استرجاع المنتج خلال 14 يومًا في حالة وجود عيب صناعة.</li>
-<li>لا يتم قبول الاسترجاع في حالة الاستخدام أو التلف الناتج عن سوء الاستخدام.</li>
-</ul>
-<h3>3️⃣ مصاريف الشحن</h3>
-<ul>
-<li>تتحمل O S A مصاريف الشحن في حالة الخطأ من جانبنا.</li>
-<li>يتحمل العميل مصاريف الشحن في حالة الاستبدال لرغبة شخصية.</li>
-</ul>
-<h3>4️⃣ طريقة التواصل</h3>
-<p>
-للاستبدال أو الاسترجاع، تواصل عبر واتساب: 
-<a href="https://wa.me/201027802631">+20 102 780 2631</a>
-</p>
-<h3>5️⃣ ملاحظات هامة</h3>
-<ul>
-<li>المنتجات المخفضة لا يتم استرجاعها إلا في حالة وجود عيب صناعة.</li>
-<li>تخضع جميع الطلبات للفحص قبل الموافقة.</li>
-</ul>
-</section>
-
-<footer>
-  <div>
-    <a href="https://www.instagram.com/o.s.a_eg" target="_blank">Instagram</a>
-    <a href="https://www.tiktok.com/@o.s.a_eg" target="_blank">TikTok</a>
-  </div>
-  <p>© جميع الحقوق محفوظة لدي HOMOS</p>
-</footer>
-
-<!-- Bottom Navigation Bar -->
-<div class="bottom-bar">
-  <button onclick="showSection('products')">🏠 الرئيسية</button>
-  <button onclick="showSection('checkout')">🛒 السلة</button>
-  <button onclick="showSection('returnPolicy')">📄 سياسة الاسترجاع</button>
+<div class="trust-bar">
+✔ توصيل لكل المحافظات &nbsp; ✔ دفع عند الاستلام &nbsp; ✔ استبدال خلال 14 يوم
 </div>
 
-<script>
-let cart=[];
-const images=[
-"img.JBEG.JPG","img2.JBEG.JPG","img3.JBEG.JPG",
-"img4.JBEG.JPG","img5.JBEG.JPG","img6.JBEG.JPG",
-"img7.JBEG.JPG","img8.JBEG.JPG","img9.JBEG.JPG"
-];
-let products=document.getElementById("products");
-images.forEach(img=>{
-products.innerHTML+=`
-<div class="product">
-<img src="${img}" alt="هودي O S A">
-<h3>هودي O S A</h3>
-<select onchange="updatePrice(this)">
-<option value="">نوع الهودي</option>
-<option value="400">سادة - 400 جنيه</option>
-<option value="500">مطبوع - 500 جنيه</option>
-</select>
-<p class="price">السعر: --</p>
-<select class="size">
-<option value="">المقاس</option>
-<option>M</option><option>L</option>
-<option>XL</option><option>2XL</option>
-</select>
-<button onclick="addToCart(this)">إضافة للسلة</button>
-</div>`;
-});
+<section id="home-section">
+<div class="product-grid" id="product-list"></div>
+</section>
 
-function updatePrice(select){
-let p=select.value;
-select.parentElement.querySelector(".price").textContent=p?`السعر: ${p} جنيه`:"السعر: --";
+<section id="checkout-section" class="hidden">
+<h2>سلة المشتريات</h2>
+<div id="cart-container"></div>
+<div id="empty-cart" class="hidden" style="text-align:center;padding:30px">
+السلة فارغة
+</div>
+
+<div id="checkout-form">
+<input id="cust-name" placeholder="الاسم بالكامل">
+<input id="cust-phone" placeholder="رقم الموبايل">
+<button class="add-btn" onclick="confirmOrder()">تأكيد الطلب عبر واتساب</button>
+</div>
+</section>
+
+<section id="policy-section" class="hidden">
+<h2>سياسة الاسترجاع</h2>
+<p>يحق للعميل الاستبدال أو الاسترجاع خلال 14 يومًا طبقًا لقانون حماية المستهلك المصري.</p>
+</section>
+
+</main>
+
+<a class="whatsapp-float" href="https://wa.me/201275855053">
+<i data-lucide="message-circle"></i>
+</a>
+
+<footer>
+<p>© 2024  HOMOS  – جميع الحقوق محفوظة</p>
+</footer>
+
+<nav class="bottom-nav">
+<button class="nav-item active" id="nav-home" onclick="showSection('home')">
+<i data-lucide="home"></i>الرئيسية
+</button>
+<button class="nav-item" id="nav-cart" onclick="showSection('checkout')">
+<i data-lucide="shopping-bag"></i>السلة
+</button>
+<button class="nav-item" id="nav-policy" onclick="showSection('policy')">
+<i data-lucide="shield-check"></i>السياسات
+</button>
+</nav>
+
+<script>
+const ORDER_WHATSAPP="201275855053";
+
+const products=[
+{id:1,name:"هودي سادة أسود - O S A",price:400,img:"img1.jpg"},
+{id:2,name:"هودي سادة رمادي - O S A",price:400,img:"img2.jpg"},
+{id:3,name:"هودي مطبوع لوجو أبيض",price:500,img:"img3.jpg"},
+{id:4,name:"هودي مطبوع لوجو أسود",price:500,img:"img4.jpg"}
+];
+
+let cart=[];
+
+lucide.createIcons();
+
+function renderProducts(){
+document.getElementById("product-list").innerHTML=
+products.map(p=>`
+<div class="product-card">
+<div class="product-image-wrapper">
+<img src="${p.img}" class="product-image">
+</div>
+<div class="product-info">
+<div class="product-name">${p.name}</div>
+<div class="product-price">${p.price} جنيه</div>
+<select id="size-${p.id}">
+<option value="">اختر المقاس</option>
+<option>M</option><option>L</option><option>XL</option><option>2XL</option>
+</select>
+<button class="add-btn" onclick="addToCart(${p.id},this)">
+<i data-lucide="shopping-cart"></i> أضف للسلة
+</button>
+</div>
+</div>`).join("");
+lucide.createIcons();
 }
 
-function addToCart(btn){
-let box=btn.parentElement;
-let type=box.querySelector("select").value;
-let size=box.querySelector(".size").value;
-if(type==""||size==""){alert("اختار النوع والمقاس");return;}
-let t=type==400?"سادة":"مطبوع";
-cart.push(`هودي O S A | ${t} | ${size} | ${type} جنيه`);
-renderCart();
+function addToCart(id,btn){
+const size=document.getElementById(`size-${id}`).value;
+if(!size){alert("من فضلك اختر المقاس");return;}
+const p=products.find(x=>x.id===id);
+cart.push({...p,size,uid:Date.now()});
+btn.textContent="تمت الإضافة ✓";
+btn.style.background="var(--green)";
+setTimeout(()=>{btn.textContent="أضف للسلة";btn.style.background="#000"},800);
+}
+
+function showSection(s){
+["home","checkout","policy"].forEach(x=>{
+document.getElementById(x+"-section").classList.add("hidden");
+document.getElementById("nav-"+(x==="home"?"home":x==="checkout"?"cart":"policy")).classList.remove("active");
+});
+document.getElementById(s+"-section").classList.remove("hidden");
+document.getElementById("nav-"+(s==="home"?"home":s==="checkout"?"cart":"policy")).classList.add("active");
+if(s==="checkout")renderCart();
 }
 
 function renderCart(){
-let c=document.getElementById("cartItems");
-c.innerHTML="";
-cart.forEach(i=>{
-c.innerHTML+=`<div class="cart-item">${i}</div>`;
-});
+const c=document.getElementById("cart-container");
+const empty=document.getElementById("empty-cart");
+if(!cart.length){c.innerHTML="";empty.classList.remove("hidden");return;}
+empty.classList.add("hidden");
+let total=0;
+c.innerHTML=cart.map(i=>{
+total+=i.price;
+return `<div class="cart-item">${i.name} (${i.size}) - ${i.price}ج</div>`;
+}).join("")+`<strong>الإجمالي: ${total} جنيه</strong>`;
 }
 
-function sendOrder(){
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-if(name==""||phone==""||cart.length==0){
-alert("كمّل البيانات والسلة");return;
-}
-let msg=`طلب جديد - O S A%0A
-الاسم: ${name}%0A
-الهاتف: ${phone}%0A
-------------------%0A
-${cart.join("%0A")}%0A
-الدفع عند الاستلام`;
-window.open(`https://wa.me/201275855053?text=${msg}`,"_blank");
+function confirmOrder(){
+let name=document.getElementById("cust-name").value;
+let phone=document.getElementById("cust-phone").value;
+if(!name||!phone){alert("أكمل البيانات");return;}
+let msg=`طلب جديد\nالاسم:${name}\nالموبايل:${phone}\n`;
+cart.forEach((i,n)=>msg+=`\n${n+1}- ${i.name} (${i.size})`);
+window.open(`https://wa.me/${ORDER_WHATSAPP}?text=${encodeURIComponent(msg)}`);
 }
 
-function showSection(id){
-document.getElementById("products").style.display="none";
-document.getElementById("checkout").classList.remove("active");
-document.getElementById("returnPolicy").classList.remove("active");
-
-if(id==="products") document.getElementById("products").style.display="grid";
-if(id==="checkout") document.getElementById("checkout").classList.add("active");
-if(id==="returnPolicy") document.getElementById("returnPolicy").classList.add("active");
-}
+window.onload=renderProducts;
 </script>
 
 </body>
